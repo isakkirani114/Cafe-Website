@@ -1,0 +1,181 @@
+import React from "react";
+import { useNavigate } from "react-router-dom";
+
+function Cart({ cart, setCart }) {
+const navigate = useNavigate();
+
+// Increase quantity
+const increaseQuantity = (id) => {
+setCart(
+cart.map((item) =>
+item.id === id
+? { ...item, quantity: item.quantity + 1 }
+: item
+)
+);
+}
+;
+
+// Decrease quantity
+const decreaseQuantity = (id) => {
+setCart(
+cart
+.map((item) =>
+item.id === id
+? { ...item, quantity: item.quantity - 1 }
+: item
+)
+.filter((item) => item.quantity > 0)
+);
+};
+
+// Remove item
+const removeItem = (id) => {
+setCart(
+cart.filter((item) => item.id !== id)
+);
+};
+
+// Total price
+const totalPrice = cart.reduce(
+(total, item) =>
+total + item.price * item.quantity,
+0
+);
+
+// Total quantity
+const totalItems = cart.reduce(
+(total, item) =>
+total + item.quantity,
+0
+);
+
+return ( <div className="cart-page">
+  <h1>🛒 Your Cart</h1>
+
+  {cart.length === 0 ? (
+
+    <div className="empty-cart">
+      <h2>Your cart is empty 😔</h2>
+      <p>
+        Add some delicious items from our menu.
+      </p>
+    </div>
+
+  ) : (
+
+    <div className="cart-container">
+
+      {/* Cart Items */}
+      <div className="cart-items">
+
+        {cart.map((item) => (
+
+          <div
+            className="cart-card"
+            key={item.id}
+          >
+
+            <img
+              src={item.image}
+              alt={item.name}
+            />
+
+            <div className="cart-info">
+
+              <h2>{item.name}</h2>
+
+              <p className="cart-price">
+                ₹{item.price}
+              </p>
+
+              {/* Quantity Buttons */}
+              <div className="cart-actions">
+
+                <button
+                  onClick={() =>
+                    decreaseQuantity(item.id)
+                  }
+                >
+                  -
+                </button>
+
+                <span>
+                  {item.quantity}
+                </span>
+
+                <button
+                  onClick={() =>
+                    increaseQuantity(item.id)
+                  }
+                >
+                  +
+                </button>
+
+              </div>
+
+              <p className="item-total">
+                Total: ₹
+                {item.price * item.quantity}
+              </p>
+
+              <button
+                className="remove-btn"
+                onClick={() =>
+                  removeItem(item.id)
+                }
+              >
+                Remove
+              </button>
+
+            </div>
+
+          </div>
+
+        ))}
+
+      </div>
+
+      {/* Cart Summary */}
+      <div className="cart-summary">
+
+        <h2>Order Summary</h2>
+
+        <div className="summary-row">
+          <span>Items</span>
+          <span>{totalItems}</span>
+        </div>
+
+        <div className="summary-row">
+          <span>Subtotal</span>
+          <span>₹{totalPrice}</span>
+        </div>
+
+        <div className="summary-row">
+          <span>Delivery</span>
+          <span>Free</span>
+        </div>
+
+        <hr />
+
+        <div className="total-row">
+          <span>Total</span>
+          <strong>₹{totalPrice}</strong>
+        </div>
+      <button onClick={() => navigate("/address")}>
+  Proceed to Checkout
+</button>
+
+      </div>
+
+    </div>
+
+  )}
+
+</div>
+
+
+);
+}
+
+export default Cart;

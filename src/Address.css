@@ -1,0 +1,113 @@
+/* Main Address Page */
+.address-page {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: #f7f1eb;
+  font-family: Arial, sans-serif;
+}
+
+/* Heading */
+.address-page h1 {
+  text-align: center;
+  color: #4b2e20;
+  margin-bottom: 30px;
+  font-size: 32px;
+}
+
+/* Form */
+.address-page form {
+  width: 450px;
+  max-width: 100%;
+  margin: auto;
+  padding: 30px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Input Fields */
+.address-page input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px;
+  margin-bottom: 15px;
+  border: 1px solid #d6c5b8;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+}
+
+/* Input Focus */
+.address-page input:focus {
+  border-color: #8b5e3c;
+  box-shadow: 0 0 5px rgba(139, 94, 60, 0.3);
+}
+
+/* Button */
+.address-page button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 8px;
+  background: #6f4e37;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Button Hover */
+.address-page button:hover {
+  background: #4b2e20;
+  transform: translateY(-2px);
+}
+
+/* Saved Address Box */
+.saved-address {
+  width: 450px;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 30px auto 0;
+  padding: 25px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Saved Address Heading */
+.saved-address h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #4b2e20;
+}
+
+/* Saved Address Text */
+.saved-address p {
+  margin: 10px 0;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Strong Text */
+.saved-address strong {
+  color: #4b2e20;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+
+  .address-page {
+    padding: 25px 15px;
+  }
+
+  .address-page h1 {
+    font-size: 26px;
+  }
+
+  .address-page form,
+  .saved-address {
+    padding: 20px;
+  }
+}

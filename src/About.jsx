@@ -13,7 +13,7 @@ const fadeUp = {
 
 const About = () => {
   return (
-    <h1>Top Cafe Shop</h1>
+
     <div className="about-page">
 
       {/* Hero Section */}
